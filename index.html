@@ -229,6 +229,263 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jpy920718.github.io/2019/01/22/学学小程序之--小程序模板及include和import的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="纪朋元">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云深不知处">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/22/学学小程序之--小程序模板及include和import的区别/" itemprop="url">学学小程序之--小程序模板及include和import的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-22T22:26:26+08:00">
+                2019-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###小程序中模板的定义</p>
+<p>name 模板的名称<br>is声明使用哪个模板，通过data向模板传入信息，只能通过data传入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// index.wxml</span><br><span class="line">&lt;template name=<span class="string">"tempItem"</span>&gt;</span><br><span class="line">    &lt;view&gt;</span><br><span class="line">        &lt;view&gt;收件人：&#123;&#123;name&#125;&#125;&lt;/view&gt;</span><br><span class="line">        &lt;view&gt;联系方式：&#123;&#123;phone&#125;&#125;&lt;/view&gt;</span><br><span class="line">        &lt;view&gt;地址：&#123;&#123;address&#125;&#125;&lt;/view&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;template is=<span class="string">"tempItem"</span> data=<span class="string">"&#123;&#123;...info&#125;&#125;"</span>&gt;&lt;/template&gt;</span><br><span class="line">//index.js</span><br><span class="line">Page(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">        info: &#123;</span><br><span class="line">            name: <span class="string">'张三'</span>,</span><br><span class="line">            phone:<span class="string">'123232323'</span>,</span><br><span class="line">            address: <span class="string">'中国'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>###小程序模板引用include和include</p>
+<p>####inport只会引用template内的的内容，动态的传入数据，is表示引用的模板名称，data表示传入模板的数据, 不要死循环应用模板<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// index.wxml</span><br><span class="line">&lt;import src=<span class="string">"a.wxml"</span>&gt;&lt;/import&gt;</span><br><span class="line">&lt;template is=<span class="string">"a"</span>&gt;&lt;/template&gt;</span><br><span class="line">// a.wxml</span><br><span class="line">&lt;view&gt;</span><br><span class="line">    a里的helloword</span><br><span class="line">&lt;/view&gt;</span><br><span class="line">&lt;template name=<span class="string">"a"</span>&gt;a的模板里的helloword！！ &lt;/template&gt;</span><br></pre></td></tr></table></figure></p>
+<p>####include只会引用除template内容外的内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//index.wxml</span><br><span class="line">&lt;include src=<span class="string">"a.wxml"</span>&gt;&lt;/include&gt;</span><br><span class="line">&lt;template is=<span class="string">"a"</span>&gt;&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">//a.wxml</span><br><span class="line">&lt;template name=<span class="string">'a'</span>&gt;</span><br><span class="line">    &lt;view&gt;模板内容&lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;view&gt;</span><br><span class="line">    模板外的内容</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jpy920718.github.io/2019/01/07/Typescript 泛型 类型变量 T/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="纪朋元">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云深不知处">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/07/Typescript 泛型 类型变量 T/" itemprop="url">Typescript 泛型 类型变量 T</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-07T09:49:40+08:00">
+                2019-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>类型变量：确保输出的返回值与传入的形参的类型一致，它是一种特殊的变量，表示类型不表示值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过给函数添加了类型变量 T 。T 可以捕获用户传入的类型，使用 T 作为返回值的类型。这样就可以知道发返回值的类型和参数类型是一致的。</p>
+<p>把可以适用于多种类型的函数称为泛型函数。</p>
+<p>我们可以使用两种方式来使用泛型函数</p>
+<ul>
+<li><p>第一种：明确指定 T 为string类型, 并传递一个string参数给函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func&lt;string&gt;(<span class="string">'123'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第二种：利用类型推论，编译器根据传入的参数自动确定 T 的类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">func(<span class="number">123</span>);</span><br><span class="line">func(<span class="string">'123'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>不一定使用尖括号明确指定传入参数的类型，编译器可以自己判断传入参数的类型，然后将 T 设置为传入参数的类型。<br>如果编译器不能自动的推断出类型的话，只能明确传入 T 的类型。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://jpy920718.github.io/2018/08/10/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -390,7 +647,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -398,15 +655,6 @@
 
             
 
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">tags</span>
-                
-              </div>
             
 
           </nav>
