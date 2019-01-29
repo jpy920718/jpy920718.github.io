@@ -229,6 +229,259 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jpy920718.github.io/2019/01/29/学习Typescript类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="纪朋元">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云深不知处">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/29/学习Typescript类/" itemprop="url">学习Typescript类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-29T23:40:42+08:00">
+                2019-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><h3 id="es5中定义一个简单的类"><a href="#es5中定义一个简单的类" class="headerlink" title="es5中定义一个简单的类"></a>es5中定义一个简单的类</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=<span class="string">'jpy'</span>;</span><br><span class="line">    <span class="keyword">this</span>.age=<span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(person.name);</span><br></pre></td></tr></table></figure>
+<h3 id="够着函数和原型链中增加方法"><a href="#够着函数和原型链中增加方法" class="headerlink" title="够着函数和原型链中增加方法"></a>够着函数和原型链中增加方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=<span class="string">'jpy'</span>;</span><br><span class="line">    <span class="keyword">this</span>.age=<span class="number">18</span>;</span><br><span class="line">    <span class="keyword">this</span>.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>在走路`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</span><br><span class="line">person.run();<span class="comment">// jpy在走路</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在原型链上定义属性和方法，</span></span><br><span class="line">Person.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line">Person.prototype.work = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>在工作`</span>)</span><br><span class="line">&#125;</span><br><span class="line">person.work();<span class="comment">// jpy在工作</span></span><br></pre></td></tr></table></figure>
+<p>原型链上的属性和方法会被多个实例共享但是构造函数不会</p>
+<h3 id="类中的静态方法"><a href="#类中的静态方法" class="headerlink" title="类中的静态方法"></a>类中的静态方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=<span class="string">'jpy'</span>;</span><br><span class="line">    <span class="keyword">this</span>.age=<span class="number">18</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">Person.getInfo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`姓名：<span class="subst">$&#123;Person.name&#125;</span>`</span></span><br><span class="line">&#125;</span><br><span class="line">Person.getInfo();<span class="comment">//姓名：jpy</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jpy920718.github.io/2019/01/27/学习Typescript函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="纪朋元">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云深不知处">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/27/学习Typescript函数/" itemprop="url">学习Typescript函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-27T23:27:08+08:00">
+                2019-01-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h2><h3 id="指定返回类型"><a href="#指定返回类型" class="headerlink" title="指定返回类型"></a>指定返回类型</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1函数声明法</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>):<span class="title">string</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'run'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//2匿名函数法</span></span><br><span class="line">    <span class="keyword">let</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>):<span class="title">string</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'123'</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 没有返回值</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>):<span class="title">void</span></span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'123'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/*-----------*/</span></span><br><span class="line"><span class="comment">// 定义方法传参</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">name:string, age: number</span>): <span class="title">string</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;name&#125;</span>---<span class="subst">$&#123;age&#125;</span>`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    fun(<span class="string">'jpy'</span>, <span class="number">27</span>); <span class="comment">//right</span></span><br><span class="line">    fun(<span class="string">'jpy'</span>, <span class="string">'27'</span>); <span class="comment">//fail</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> getInfo = <span class="function"><span class="keyword">function</span>(<span class="params">name: string,age:number</span>):<span class="title">string</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;name&#125;</span>---<span class="subst">$&#123;age&#125;</span>`</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ts中实参和形参必须一样，如果不一样需要配置可选参数-形参后面通过？来决定蚕食是否必传，如果有？则为可选参数，如果没有必传。"><a href="#ts中实参和形参必须一样，如果不一样需要配置可选参数-形参后面通过？来决定蚕食是否必传，如果有？则为可选参数，如果没有必传。" class="headerlink" title="ts中实参和形参必须一样，如果不一样需要配置可选参数,形参后面通过？来决定蚕食是否必传，如果有？则为可选参数，如果没有必传。"></a>ts中实参和形参必须一样，如果不一样需要配置可选参数,形参后面通过？来决定蚕食是否必传，如果有？则为可选参数，如果没有必传。</h3><blockquote>
+<p>注：可选参数必须配置到参数的最后面</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getInfo</span>(<span class="params">name: string, age?: number</span>): <span class="title">string</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(age)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;name&#125;</span>---<span class="subst">$&#123;age&#125;</span>`</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;name&#125;</span>`</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">getInfo(<span class="string">'jpy'</span>, <span class="number">12</span>);</span><br><span class="line">getInfo(<span class="string">'jpy'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="ts-默认参数，在es5中是无法设置默认参数的，es6之后和ts中可以设置默认参数"><a href="#ts-默认参数，在es5中是无法设置默认参数的，es6之后和ts中可以设置默认参数" class="headerlink" title="ts 默认参数，在es5中是无法设置默认参数的，es6之后和ts中可以设置默认参数"></a>ts 默认参数，在es5中是无法设置默认参数的，es6之后和ts中可以设置默认参数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getInfo</span>(<span class="params">name: string, number=<span class="number">20</span></span>):<span class="title">string</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;name&#125;</span>---<span class="subst">$&#123;age&#125;</span>`</span></span><br><span class="line">&#125;</span><br><span class="line">getInfo(<span class="string">'jpy'</span>);</span><br><span class="line">getInfo(<span class="string">'jpy'</span>, <span class="number">32</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="剩余参数"><a href="#剩余参数" class="headerlink" title="剩余参数"></a>剩余参数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...三点运算符</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">...result: number[]</span>): <span class="title">number</span></span>&#123;</span><br><span class="line">    <span class="keyword">let</span> sum = <span class="number">0</span> ;</span><br><span class="line">    result.map(<span class="function"><span class="params">item</span> =&gt;</span> sum+=item)</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line">sum(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) <span class="comment">//6</span></span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a: number, ...result: number[]</span>): <span class="title">number</span></span>&#123;</span><br><span class="line">    <span class="keyword">let</span> sum = a ;</span><br><span class="line">    result.map(<span class="function"><span class="params">item</span> =&gt;</span> sum+=item)</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line">sum(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)<span class="comment">//6</span></span><br></pre></td></tr></table></figure>
+<h3 id="ts函数重载-。"><a href="#ts函数重载-。" class="headerlink" title="ts函数重载 。"></a>ts函数重载 。</h3><p>Java中函数重载，两个或者以上的函数名相同，但参数不同的函数叫做重载；typescript为了兼容es5以及es6重载的写法和java有区别。 在es5中出现同名的方法，后面的会替换前面的方法。ts中的重载，同样的方法，传入不同参数，执行不同的功能<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getInfo</span>(<span class="params">name: string</span>):<span class="title">string</span>;</span></span><br><span class="line"><span class="function"><span class="title">function</span> <span class="title">getInfo</span>(<span class="params">age:number</span>):<span class="title">number</span></span></span><br><span class="line"><span class="function"><span class="title">function</span> <span class="title">getInfo</span>(<span class="params">str:any</span>):<span class="title">any</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> str === <span class="string">'string'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`名字：<span class="subst">$&#123;str&#125;</span>`</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> str === <span class="string">'number'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`年龄：<span class="subst">$&#123;str&#125;</span>`</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'类型错误'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">getInfo(<span class="string">'jpy'</span>);<span class="comment">//right</span></span><br><span class="line">getInfo(<span class="number">18</span>);<span class="comment">//right</span></span><br><span class="line">getInfo(<span class="literal">true</span>);<span class="comment">//fail</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>以上ts代码经过编译后会变成如下</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getInfo</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> str === <span class="string">'string'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`名字：<span class="subst">$&#123;str&#125;</span>`</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> str === <span class="string">'number'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`年龄：<span class="subst">$&#123;str&#125;</span>`</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'类型错误'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="箭头函数-this指向上下文"><a href="#箭头函数-this指向上下文" class="headerlink" title="箭头函数 this指向上下文"></a>箭头函数 this指向上下文</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">111</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://jpy920718.github.io/2019/01/27/学习Typescript类型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -914,7 +1167,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
