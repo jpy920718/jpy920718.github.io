@@ -2,7 +2,7 @@
 title: 学习Typescript类
 date: 2019-01-29 23:40:42
 tags:
-    - typescript
+    - Typescript
 ---
 
 # es5的类
@@ -51,6 +51,7 @@ tags:
     }
     Person.getInfo();//姓名：jpy
 ```
+<!--more-->
 
 ### 继承 原型链+对象冒充的组合继承模式.
 #### 对象冒充继承可以继承Person构造函数里面的属性和方法，但是不能继承Person原型链上的属性和方法

@@ -2,7 +2,7 @@
 title: 学习Typescript函数
 date: 2019-01-27 23:27:08
 tags:
-    - typescript
+    - Typescript
 ---
 
 ## 函数定义 
@@ -49,7 +49,7 @@ tags:
     getInfo('jpy', 12);
     getInfo('jpy');
 ```
-
+<!--more-->
 ### ts 默认参数，在es5中是无法设置默认参数的，es6之后和ts中可以设置默认参数
 
 ```js

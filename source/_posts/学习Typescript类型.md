@@ -1,7 +1,8 @@
 ---
 title: 学习Typescript类型
 date: 2019-01-27 22:37:39
-tags: ['Typescript']
+tags: 
+    - Typescript
 ---
 ### Typescript 数据类型
 * boolean
@@ -52,7 +53,7 @@ tags: ['Typescript']
     let arr:any[] = [1,'32',true,34]; //right
 
 ```
-
+<!--more-->
 #### undefined 和 null
 ```javascript
     //undefined
