@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jpy920718.github.io/"/>
-  <updated>2019-06-11T16:22:37.831Z</updated>
+  <updated>2019-09-10T16:12:17.820Z</updated>
   <id>https://jpy920718.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git - tag 使用</title>
+    <link href="https://jpy920718.github.io/2019/09/09/git-tag%E4%BD%BF%E7%94%A8/"/>
+    <id>https://jpy920718.github.io/2019/09/09/git-tag使用/</id>
+    <published>2019-09-08T16:34:18.000Z</published>
+    <updated>2019-09-10T16:12:17.820Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="更改内容提交"><a href="#更改内容提交" class="headerlink" title="更改内容提交"></a>更改内容提交</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'提交1'</span></span><br><span class="line"></span><br><span class="line">git tag tag_01</span><br></pre></td></tr></table></figure><h3 id="回退修改前版本"><a href="#回退修改前版本" class="headerlink" title="回退修改前版本"></a>回退修改前版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard xxxx // xxxx 提交hashid</span><br></pre></td></tr></table></figure><h3 id="修改内容提交"><a href="#修改内容提交" class="headerlink" title="修改内容提交"></a>修改内容提交</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'提交1'</span></span><br><span class="line"></span><br><span class="line">git tag tag_02</span><br></pre></td></tr></table></figure><h3 id="使用git-tags-查看tag-list"><a href="#使用git-tags-查看tag-list" class="headerlink" title="使用git tags 查看tag list"></a>使用git tags 查看tag list</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tags</span><br></pre></td></tr></table></figure><h3 id="将tags-push至远程"><a href="#将tags-push至远程" class="headerlink" title="将tags push至远程"></a>将tags push至远程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --tags</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;更改内容提交&quot;&gt;&lt;a href=&quot;#更改内容提交&quot; class=&quot;headerlink&quot; title=&quot;更改内容提交&quot;&gt;&lt;/a&gt;更改内容提交&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutt
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="https://jpy920718.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

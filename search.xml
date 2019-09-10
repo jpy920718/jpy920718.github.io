@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[git - tag 使用]]></title>
+    <url>%2F2019%2F09%2F09%2Fgit-tag%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[更改内容提交1234git add .git commit -m '提交1'git tag tag_01 回退修改前版本1git reset --hard xxxx // xxxx 提交hashid 修改内容提交1234git add .git commit -m '提交1'git tag tag_02 使用git tags 查看tag list1git tags 将tags push至远程1git push --tags]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F06%2F12%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
